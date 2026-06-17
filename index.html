@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arca Studio — Brand & Web Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --cream:  #f7f4ef;
+      --cream2: #ede9e1;
+      --cream3: #e3ddd4;
+      --ink:    #1a1510;
+      --ink2:   #6b5f52;
+      --ink3:   #b0a090;
+      --coral:  #e8553a;
+      --coral-d:#c84428;
+      --ct:     rgba(232,85,58,0.1);
+      --b:      rgba(26,21,16,0.08);
+      --bd:     rgba(26,21,16,0.15);
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top:0; z-index:200;
+      height: 64px; padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(247,244,239,0.93);
+      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      border-bottom: 1px solid var(--b);
+    }
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem; font-weight: 700;
+      letter-spacing: -0.02em; color: var(--ink);
+    }
+    .logo em { font-style: italic; color: var(--coral); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--ink2); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .avail {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.78rem; color: var(--ink2);
+    }
+    .g-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #22c55e;
+      animation: pg 2.2s ease-in-out infinite;
+    }
+    @keyframes pg { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+    .btn-talk {
+      padding: 9px 22px; border-radius: 100px;
+      background: var(--ink); color: var(--cream);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.875rem; font-weight: 600;
+      border: none; transition: all 0.2s;
+    }
+    .btn-talk:hover { background: var(--coral); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero { padding: 80px 5% 72px; overflow: hidden; }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 400px;
+      gap: 56px; align-items: center;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.77rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.13em;
+      color: var(--ink2); margin-bottom: 22px;
+    }
+    .hero-tag::before { content:''; width:26px; height:1px; background:var(--ink3); flex-shrink:0; }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem,5.5vw,5rem);
+      font-weight: 800; letter-spacing:-0.03em;
+      line-height: 1.02; margin-bottom: 22px; color: var(--ink);
+    }
+    h1 em { font-style: italic; color: var(--coral); }
+    .hero-p {
+      font-size: 1.05rem; color: var(--ink2);
+      line-height: 1.78; max-width: 430px; margin-bottom: 34px;
+    }
+    .hero-btns { display: flex; align-items: center; gap: 14px; margin-bottom: 48px; }
+    .btn-prim {
+      padding: 14px 30px; border-radius: 100px;
+      background: var(--ink); color: var(--cream);
+      font-family:'Outfit',sans-serif; font-size:0.98rem; font-weight:700;
+      border:none; transition: all 0.2s;
+    }
+    .btn-prim:hover { background: var(--coral); transform: translateY(-1px); }
+    .btn-sec {
+      padding: 13px 26px; border-radius: 100px;
+      background: transparent; border: 1.5px solid var(--bd); color: var(--ink);
+      font-family:'Outfit',sans-serif; font-size:0.98rem; font-weight:600;
+      transition: all 0.2s;
+    }
+    .btn-sec:hover { border-color: var(--ink); }
+    .hero-stats { display: flex; gap: 36px; }
+    .hs-num {
+      font-family:'Fraunces',serif; font-size:1.6rem; font-weight:700;
+      color:var(--ink); line-height:1; margin-bottom:3px;
+    }
+    .hs-lbl { font-size:0.77rem; color:var(--ink3); }
+
+    /* Stacked portfolio cards */
+    .hero-stack { position:relative; height:480px; }
+    .hcard {
+      position: absolute; width: 280px;
+      background: white; border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(26,21,16,0.12), 0 2px 8px rgba(26,21,16,0.06);
+      overflow: hidden;
+      transition: box-shadow 0.4s ease;
+    }
+    .hcard-1 { top:0;   left:50px; transform:rotate(2deg);   z-index:3; }
+    .hcard-2 { top:110px; left:10px; transform:rotate(-1.5deg); z-index:2; }
+    .hcard-3 { top:230px; left:60px; transform:rotate(1.5deg); z-index:1; }
+    .hcard:hover { box-shadow: 0 18px 56px rgba(26,21,16,0.18); transform: rotate(0deg) translateY(-6px) !important; }
+    .hcard-thumb { height:145px; position:relative; overflow:hidden; }
+    .hcard-cat {
+      position:absolute; top:12px; left:12px;
+      background: rgba(0,0,0,0.3); backdrop-filter:blur(8px);
+      color:white; font-size:0.63rem; font-weight:600;
+      text-transform:uppercase; letter-spacing:0.1em;
+      padding:3px 9px; border-radius:100px;
+    }
+    .hcard-body { padding:13px 16px; }
+    .hcard-proj { font-size:0.82rem; font-weight:700; color:var(--ink); margin-bottom:2px; }
+    .hcard-type { font-size:0.71rem; color:var(--ink3); }
+
+    /* ── LOGOS ── */
+    .logos {
+      background:var(--cream2);
+      border-top:1px solid var(--b); border-bottom:1px solid var(--b);
+      padding:24px 5%;
+    }
+    .logos-in {
+      max-width:1100px; margin:0 auto;
+      display:flex; align-items:center;
+      justify-content:center; gap:32px; flex-wrap:wrap;
+    }
+    .logos-lbl { font-size:0.73rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink3); white-space:nowrap; }
+    .logo-list { display:flex; gap:30px; align-items:center; flex-wrap:wrap; justify-content:center; }
+    .lw { font-family:'Fraunces',serif; font-weight:700; font-size:0.9rem; color:var(--ink3); opacity:0.5; letter-spacing:0.03em; }
+
+    /* ── SECTION BASE ── */
+    .sec { padding: 92px 5%; }
+    .sec-c { max-width: 1200px; margin: 0 auto; }
+    .slabel { font-size:0.71rem; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:var(--coral); margin-bottom:10px; }
+    .sh { font-family:'Fraunces',serif; font-size:clamp(2rem,3.2vw,2.8rem); font-weight:700; letter-spacing:-0.025em; line-height:1.15; margin-bottom:13px; }
+    .sh em { font-style:italic; color:var(--coral); }
+    .sp { font-size:1rem; color:var(--ink2); max-width:500px; line-height:1.78; }
+
+    /* ── SERVICES ── */
+    .srv-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      margin-top:52px;
+      border:1px solid var(--b); border-radius:16px; overflow:hidden;
+      gap:1px; background:var(--b);
+    }
+    .srv-card { background:var(--cream); padding:34px 30px; transition:background 0.25s; }
+    .srv-card:hover { background:var(--cream2); }
+    .srv-n { font-family:'Fraunces',serif; font-size:0.74rem; font-weight:600; color:var(--ink3); margin-bottom:18px; }
+    .srv-ic { font-size:26px; margin-bottom:13px; display:block; }
+    .srv-h { font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin-bottom:9px; }
+    .srv-p { font-size:0.875rem; color:var(--ink2); line-height:1.72; margin-bottom:18px; }
+    .srv-from { font-size:0.78rem; color:var(--ink3); font-weight:600; }
+    .srv-from span { color:var(--coral); }
+
+    /* ── FEATURED WORK ── */
+    .work-sec { background:var(--cream2); }
+    .work-head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:38px; }
+    .view-all { font-size:0.875rem; font-weight:600; color:var(--ink2); display:flex; align-items:center; gap:6px; transition:color 0.2s; }
+    .view-all:hover { color:var(--coral); }
+    .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .wcard { background:white; border-radius:16px; overflow:hidden; cursor:pointer; transition:transform 0.3s,box-shadow 0.3s; }
+    .wcard:hover { transform:translateY(-7px); box-shadow:0 22px 60px rgba(26,21,16,0.14); }
+    .wcard-thumb { height:240px; position:relative; overflow:hidden; }
+    .wcard-inner { position:absolute; inset:0; transition:transform 0.5s ease; }
+    .wcard:hover .wcard-inner { transform:scale(1.04); }
+    .wcard-overlay {
+      position:absolute; inset:0;
+      background:rgba(26,21,16,0);
+      transition:background 0.3s;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .wcard:hover .wcard-overlay { background:rgba(26,21,16,0.15); }
+    .view-pill {
+      background:white; color:var(--ink);
+      padding:9px 18px; border-radius:100px;
+      font-size:0.8rem; font-weight:600;
+      opacity:0; transform:translateY(8px);
+      transition:opacity 0.3s,transform 0.3s;
+    }
+    .wcard:hover .view-pill { opacity:1; transform:translateY(0); }
+    .wcard-info { padding:20px 22px; }
+    .wcard-yr { font-size:0.71rem; color:var(--ink3); margin-bottom:5px; }
+    .wcard-title { font-family:'Fraunces',serif; font-size:1.15rem; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin-bottom:8px; }
+    .wcard-tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .wtag { font-size:0.68rem; font-weight:600; padding:3px 9px; border-radius:100px; background:var(--cream2); color:var(--ink2); }
+
+    /* ── ABOUT ── */
+    .about-sec { padding:80px 5%; background:var(--ink); }
+    .about-in {
+      max-width:1200px; margin:0 auto;
+      display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+    }
+    .about-lbl { font-size:0.71rem; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:var(--coral); margin-bottom:14px; }
+    .about-h {
+      font-family:'Fraunces',serif;
+      font-size:clamp(2rem,3.2vw,2.8rem);
+      font-weight:700; letter-spacing:-0.025em; line-height:1.15;
+      color:white; margin-bottom:16px;
+    }
+    .about-h em { font-style:italic; color:var(--coral); }
+    .about-p { font-size:0.98rem; color:rgba(255,255,255,0.5); line-height:1.82; margin-bottom:36px; }
+    .about-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .a-num { font-family:'Fraunces',serif; font-size:2.4rem; font-weight:800; letter-spacing:-0.03em; color:white; line-height:1; margin-bottom:4px; }
+    .a-lbl { font-size:0.8rem; color:rgba(255,255,255,0.35); }
+    .about-visual {
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:20px; height:380px;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .about-glyph {
+      position:absolute; bottom:-30px; right:-10px;
+      font-family:'Fraunces',serif; font-style:italic;
+      font-size:18rem; font-weight:800; line-height:1;
+      color:rgba(255,255,255,0.03); pointer-events:none;
+    }
+    .team-row { display:flex; gap:12px; position:relative; z-index:1; }
+    .tav {
+      width:56px; height:56px; border-radius:50%;
+      border:2px solid rgba(255,255,255,0.1);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:0.88rem; color:white;
+    }
+
+    /* ── PROCESS ── */
+    .proc-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-top:52px; }
+    .proc-num { font-family:'Fraunces',serif; font-size:3rem; font-weight:800; color:var(--cream3); line-height:1; margin-bottom:15px; letter-spacing:-0.04em; }
+    .proc-h { font-family:'Fraunces',serif; font-size:1.1rem; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin-bottom:9px; }
+    .proc-p { font-size:0.875rem; color:var(--ink2); line-height:1.72; }
+
+    /* ── TESTIMONIALS ── */
+    .test-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:52px; }
+    .tcard { background:var(--cream2); border-radius:16px; padding:28px; }
+    .tcard-q { font-family:'Fraunces',serif; font-size:3.5rem; font-weight:800; color:var(--cream3); line-height:0.85; margin-bottom:10px; }
+    .tcard-text { font-size:0.925rem; color:var(--ink2); line-height:1.78; margin-bottom:22px; }
+    .tcard-author { display:flex; align-items:center; gap:12px; }
+    .tav2 { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.82rem; color:white; flex-shrink:0; }
+    .t-name { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:2px; }
+    .t-role { font-size:0.77rem; color:var(--ink3); }
+
+    /* ── PRICING ── */
+    .pricing-sec { background:var(--cream2); }
+    .p-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:52px; align-items:start; }
+    .pcard { background:var(--cream); border:1px solid var(--b); border-radius:20px; padding:30px; transition:border-color 0.2s,box-shadow 0.2s; }
+    .pcard:hover { border-color:var(--bd); box-shadow:0 8px 32px rgba(26,21,16,0.08); }
+    .pcard.dark { background:var(--ink); border-color:var(--ink); }
+    .pcard.dark:hover { box-shadow:0 12px 48px rgba(26,21,16,0.3); }
+    .p-tier { font-size:0.77rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:13px; }
+    .pcard:not(.dark) .p-tier { color:var(--ink2); }
+    .pcard.dark .p-tier { color:rgba(255,255,255,0.45); }
+    .p-price { font-family:'Fraunces',serif; font-size:2.8rem; font-weight:800; letter-spacing:-0.03em; line-height:1; margin-bottom:8px; }
+    .pcard:not(.dark) .p-price { color:var(--ink); }
+    .pcard.dark .p-price { color:white; }
+    .p-desc { font-size:0.84rem; line-height:1.58; margin-bottom:22px; min-height:38px; }
+    .pcard:not(.dark) .p-desc { color:var(--ink2); }
+    .pcard.dark .p-desc { color:rgba(255,255,255,0.5); }
+    .p-hr { border:none; border-top:1px solid; margin:18px 0; }
+    .pcard:not(.dark) .p-hr { border-color:var(--b); }
+    .pcard.dark .p-hr { border-color:rgba(255,255,255,0.08); }
+    .p-list { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:26px; }
+    .p-list li { display:flex; align-items:center; gap:10px; font-size:0.855rem; }
+    .pcard:not(.dark) .p-list li { color:var(--ink2); }
+    .pcard.dark .p-list li { color:rgba(255,255,255,0.55); }
+    .pchk { width:17px; height:17px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; flex-shrink:0; }
+    .pcard:not(.dark) .pchk { background:var(--ct); border:1px solid rgba(232,85,58,0.2); color:var(--coral); }
+    .pcard.dark .pchk { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.7); }
+    .p-btn { width:100%; padding:13px; border-radius:100px; font-family:'Outfit',sans-serif; font-size:0.92rem; font-weight:700; transition:all 0.2s; }
+    .p-btn-ink { background:var(--ink); border:none; color:white; }
+    .p-btn-ink:hover { background:var(--coral); transform:translateY(-1px); }
+    .p-btn-light { background:white; border:none; color:var(--ink); }
+    .p-btn-light:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(255,255,255,0.15); }
+    .p-btn-out { background:transparent; border:1.5px solid var(--bd); color:var(--ink); }
+    .p-btn-out:hover { border-color:var(--ink); }
+    .p-note { text-align:center; margin-top:18px; font-size:0.8rem; color:var(--ink3); }
+
+    /* ── CTA DARK ── */
+    .cta-sec { background:var(--ink); padding:100px 5%; position:relative; overflow:hidden; }
+    .cta-bg {
+      position:absolute; bottom:-50px; right:3%;
+      font-family:'Fraunces',serif; font-style:italic;
+      font-size:16rem; font-weight:800; line-height:1;
+      color:rgba(255,255,255,0.022); pointer-events:none; user-select:none;
+    }
+    .cta-in {
+      max-width:1200px; margin:0 auto;
+      display:grid; grid-template-columns:1fr auto;
+      gap:80px; align-items:center;
+      position:relative; z-index:1;
+    }
+    .cta-h { font-family:'Fraunces',serif; font-size:clamp(2.4rem,5vw,4.5rem); font-weight:800; letter-spacing:-0.03em; line-height:1.04; color:white; }
+    .cta-h em { font-style:italic; color:var(--coral); }
+    .cta-p { font-size:1rem; color:rgba(255,255,255,0.4); margin-top:16px; max-width:400px; line-height:1.78; }
+    .cta-btns { display:flex; flex-direction:column; gap:12px; align-items:center; white-space:nowrap; }
+    .btn-coral { padding:16px 36px; border-radius:100px; background:var(--coral); color:white; font-family:'Outfit',sans-serif; font-size:1rem; font-weight:700; border:none; transition:all 0.2s; }
+    .btn-coral:hover { background:var(--coral-d); transform:translateY(-2px); }
+    .btn-ghost-w { padding:14px 28px; border-radius:100px; background:transparent; border:1.5px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.55); font-family:'Outfit',sans-serif; font-size:0.92rem; font-weight:600; transition:all 0.2s; }
+    .btn-ghost-w:hover { border-color:rgba(255,255,255,0.35); color:white; }
+
+    /* ── FOOTER ── */
+    footer { background:#111009; padding:56px 5% 32px; border-top:1px solid rgba(255,255,255,0.05); }
+    .foot-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+    .foot-logo { font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; letter-spacing:-0.02em; color:white; margin-bottom:12px; }
+    .foot-logo em { font-style:italic; color:var(--coral); }
+    .foot-desc { font-size:0.875rem; color:rgba(255,255,255,0.3); line-height:1.75; max-width:260px; }
+    .fc h5 { font-size:0.76rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.28); margin-bottom:14px; }
+    .fc ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .fc a { font-size:0.875rem; color:rgba(255,255,255,0.42); transition:color 0.2s; }
+    .fc a:hover { color:white; }
+    .foot-bot { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:24px; font-size:0.8rem; color:rgba(255,255,255,0.22); }
+    .foot-bot-links { display:flex; gap:20px; }
+    .foot-bot-links a { color:rgba(255,255,255,0.22); transition:color 0.2s; }
+    .foot-bot-links a:hover { color:rgba(255,255,255,0.5); }
+
+    /* ── FADE IN ── */
+    .fi { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .fi.vis { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ━━ NAV ━━ -->
+<nav>
+  <div class="logo">Arc<em>a</em> Studio</div>
+  <ul class="nav-links">
+    <li><a href="#">Work</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Process</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="avail"><div class="g-dot"></div> Available for projects</div>
+    <button class="btn-talk">Let's Talk</button>
+  </div>
+</nav>
+
+<!-- ━━ HERO ━━ -->
+<section class="hero">
+  <div class="hero-inner">
+    <!-- Copy -->
+    <div>
+      <div class="hero-tag">Brand &amp; Web Design Studio</div>
+      <h1>We craft brands<br>people<br><em>stop for.</em></h1>
+      <p class="hero-p">
+        Arca Studio partners with startups and growing businesses to build identities, websites, and campaigns that are impossible to ignore.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-prim">See Our Work</button>
+        <button class="btn-sec">Start a Project</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-num">80+</div><div class="hs-lbl">Projects delivered</div></div>
+        <div><div class="hs-num">5 yrs</div><div class="hs-lbl">In the craft</div></div>
+        <div><div class="hs-num">4.9★</div><div class="hs-lbl">Client rating</div></div>
+      </div>
+    </div>
+
+    <!-- Stacked cards -->
+    <div class="hero-stack">
+      <div class="hcard hcard-1">
+        <div class="hcard-thumb" style="background:linear-gradient(135deg,#d4956a,#b86240)">
+          <div class="hcard-cat">Brand Identity</div>
+        </div>
+        <div class="hcard-body">
+          <div class="hcard-proj">Lumino Coffee Co.</div>
+          <div class="hcard-type">Brand + Packaging · 2025</div>
+        </div>
+      </div>
+      <div class="hcard hcard-2">
+        <div class="hcard-thumb" style="background:linear-gradient(135deg,#1a4a3a,#2d7a5f)">
+          <div class="hcard-cat">Web Design</div>
+        </div>
+        <div class="hcard-body">
+          <div class="hcard-proj">Vertex SaaS Platform</div>
+          <div class="hcard-type">Website + UI System · 2025</div>
+        </div>
+      </div>
+      <div class="hcard hcard-3">
+        <div class="hcard-thumb" style="background:linear-gradient(135deg,#1a2438,#2d4068)">
+          <div class="hcard-cat">Editorial</div>
+        </div>
+        <div class="hcard-body">
+          <div class="hcard-proj">Fold Magazine</div>
+          <div class="hcard-type">Identity + Print · 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━ LOGOS ━━ -->
+<div class="logos">
+  <div class="logos-in">
+    <span class="logos-lbl">Brands we've worked with</span>
+    <div class="logo-list">
+      <span class="lw">Lumino</span>
+      <span class="lw">Vertex</span>
+      <span class="lw">Fold</span>
+      <span class="lw">Nearco</span>
+      <span class="lw">Wren</span>
+      <span class="lw">Mara</span>
+      <span class="lw">Solace</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━ SERVICES ━━ -->
+<section class="sec">
+  <div class="sec-c">
+    <div class="slabel">What We Do</div>
+    <h2 class="sh">The full toolkit for a brand<br><em>that actually means something</em></h2>
+    <p class="sp">We don't do cookie-cutter. Every project starts with a real understanding of your audience, goals, and what sets you apart.</p>
+    <div class="srv-grid">
+      <div class="srv-card fi">
+        <div class="srv-n">01</div>
+        <span class="srv-ic">◈</span>
+        <h3 class="srv-h">Brand Identity</h3>
+        <p class="srv-p">Logo, color, typography, tone of voice, and everything in between. Brand systems built to be coherent, scalable, and entirely yours.</p>
+        <div class="srv-from">Starting <span>$1,200</span></div>
+      </div>
+      <div class="srv-card fi">
+        <div class="srv-n">02</div>
+        <span class="srv-ic">⬡</span>
+        <h3 class="srv-h">Web Design</h3>
+        <p class="srv-p">From landing pages to full marketing sites — pixel-perfect design, clean code, and experiences that turn visitors into customers.</p>
+        <div class="srv-from">Starting <span>$2,000</span></div>
+      </div>
+      <div class="srv-card fi">
+        <div class="srv-n">03</div>
+        <span class="srv-ic">◎</span>
+        <h3 class="srv-h">Campaign Creative</h3>
+        <p class="srv-p">Ad creative, social content, pitch decks, and brand campaigns that carry your story across every channel with consistency and punch.</p>
+        <div class="srv-from">Starting <span>$800</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━ FEATURED WORK ━━ -->
+<section class="sec work-sec">
+  <div class="sec-c">
+    <div class="work-head">
+      <div>
+        <div class="slabel">Featured Work</div>
+        <h2 class="sh" style="margin-bottom:0">Selected projects</h2>
+      </div>
+      <a href="#" class="view-all">View all work →</a>
+    </div>
+    <div class="work-grid">
+      <div class="wcard fi">
+        <div class="wcard-thumb">
+          <div class="wcard-inner" style="background:linear-gradient(135deg,#d4956a,#b86240)"></div>
+          <div class="wcard-overlay"><span class="view-pill">View Project</span></div>
+        </div>
+        <div class="wcard-info">
+          <div class="wcard-yr">2025</div>
+          <div class="wcard-title">Lumino Coffee Co.</div>
+          <div class="wcard-tags"><span class="wtag">Brand Identity</span><span class="wtag">Packaging</span><span class="wtag">Photography Direction</span></div>
+        </div>
+      </div>
+      <div class="wcard fi">
+        <div class="wcard-thumb">
+          <div class="wcard-inner" style="background:linear-gradient(135deg,#1a4a3a,#2d7a5f)"></div>
+          <div class="wcard-overlay"><span class="view-pill">View Project</span></div>
+        </div>
+        <div class="wcard-info">
+          <div class="wcard-yr">2025</div>
+          <div class="wcard-title">Vertex SaaS Platform</div>
+          <div class="wcard-tags"><span class="wtag">Web Design</span><span class="wtag">UI System</span><span class="wtag">Motion</span></div>
+        </div>
+      </div>
+      <div class="wcard fi">
+        <div class="wcard-thumb">
+          <div class="wcard-inner" style="background:linear-gradient(135deg,#6b3a7d,#9b4f8a)"></div>
+          <div class="wcard-overlay"><span class="view-pill">View Project</span></div>
+        </div>
+        <div class="wcard-info">
+          <div class="wcard-yr">2024</div>
+          <div class="wcard-title">Mara Events</div>
+          <div class="wcard-tags"><span class="wtag">Brand Identity</span><span class="wtag">Campaign Creative</span></div>
+        </div>
+      </div>
+      <div class="wcard fi">
+        <div class="wcard-thumb">
+          <div class="wcard-inner" style="background:linear-gradient(135deg,#1a2438,#2d4068)"></div>
+          <div class="wcard-overlay"><span class="view-pill">View Project</span></div>
+        </div>
+        <div class="wcard-info">
+          <div class="wcard-yr">2024</div>
+          <div class="wcard-title">Fold Magazine</div>
+          <div class="wcard-tags"><span class="wtag">Editorial Design</span><span class="wtag">Identity</span><span class="wtag">Print</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━ ABOUT ━━ -->
+<div class="about-sec">
+  <div class="about-in">
+    <div>
+      <div class="about-lbl">About the Studio</div>
+      <h2 class="about-h">A small studio.<br><em>Big on craft.</em></h2>
+      <p class="about-p">We're a team of three designers based in New York. We believe great brands aren't just beautiful — they're built on a clear point of view. Since 2020, we've helped 80+ businesses across 14 countries find theirs.</p>
+      <div class="about-stats">
+        <div><div class="a-num">80+</div><div class="a-lbl">Projects delivered</div></div>
+        <div><div class="a-num">14</div><div class="a-lbl">Countries served</div></div>
+        <div><div class="a-num">5yr</div><div class="a-lbl">In the game</div></div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-glyph">A</div>
+      <div class="team-row">
+        <div class="tav" style="background:linear-gradient(135deg,#e8553a,#c84428)">JL</div>
+        <div class="tav" style="background:linear-gradient(135deg,#1a4a3a,#2d7a5f)">MK</div>
+        <div class="tav" style="background:linear-gradient(135deg,#6b3a7d,#9b4f8a)">RP</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━ PROCESS ━━ -->
+<section class="sec">
+  <div class="sec-c">
+    <div class="slabel">How We Work</div>
+    <h2 class="sh">A process built for<br><em>clarity and momentum</em></h2>
+    <p class="sp">No guesswork, no design-by-committee. Our process gets to great work fast — and keeps you in control throughout.</p>
+    <div class="proc-grid">
+      <div class="fi">
+        <div class="proc-num">01</div>
+        <h3 class="proc-h">Discovery</h3>
+        <p class="proc-p">We dig into your business, audience, and goals. A focused call and a thorough brief before anything hits a sketchpad.</p>
+      </div>
+      <div class="fi">
+        <div class="proc-num">02</div>
+        <h3 class="proc-h">Concept</h3>
+        <p class="proc-p">We develop two or three strong directions — each a complete, distinct creative vision. Not half-baked mood boards.</p>
+      </div>
+      <div class="fi">
+        <div class="proc-num">03</div>
+        <h3 class="proc-h">Refine</h3>
+        <p class="proc-p">You pick a direction and we go deep. Two rounds of revision to sharpen every detail until it's exactly right.</p>
+      </div>
+      <div class="fi">
+        <div class="proc-num">04</div>
+        <h3 class="proc-h">Deliver</h3>
+        <p class="proc-p">Final files, a brand guide, and a handoff call. Everything organized and ready for immediate use across every channel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━ TESTIMONIALS ━━ -->
+<section class="sec" style="background:var(--cream2)">
+  <div class="sec-c">
+    <div class="slabel">Testimonials</div>
+    <h2 class="sh">What clients say</h2>
+    <div class="test-grid">
+      <div class="tcard fi">
+        <div class="tcard-q">"</div>
+        <p class="tcard-text">Arca didn't just design our brand — they figured out what we actually stood for and made that visible. Our new site tripled inbound leads in 60 days.</p>
+        <div class="tcard-author">
+          <div class="tav2" style="background:linear-gradient(135deg,#d4956a,#b86240)">SC</div>
+          <div><div class="t-name">Sofia Chen</div><div class="t-role">Founder, Lumino Coffee Co.</div></div>
+        </div>
+      </div>
+      <div class="tcard fi">
+        <div class="tcard-q">"</div>
+        <p class="tcard-text">We had a generic, forgettable brand. Now we have something we're proud to put in front of investors and customers alike. The ROI has been enormous.</p>
+        <div class="tcard-author">
+          <div class="tav2" style="background:linear-gradient(135deg,#1a4a3a,#2d7a5f)">JD</div>
+          <div><div class="t-name">James Darby</div><div class="t-role">CEO, Vertex</div></div>
+        </div>
+      </div>
+      <div class="tcard fi">
+        <div class="tcard-q">"</div>
+        <p class="tcard-text">Fast, communicative, and the final product blew every stakeholder away. I've worked with much bigger agencies that delivered far less. Will absolutely be back.</p>
+        <div class="tcard-author">
+          <div class="tav2" style="background:linear-gradient(135deg,#6b3a7d,#9b4f8a)">AL</div>
+          <div><div class="t-name">Amara Lowe</div><div class="t-role">Creative Director, Mara Events</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━ PRICING ━━ -->
+<section class="sec pricing-sec">
+  <div class="sec-c">
+    <div style="text-align:center">
+      <div class="slabel">Pricing</div>
+      <h2 class="sh">Project-based pricing.<br><em>No hidden fees.</em></h2>
+      <p class="sp" style="margin:0 auto 52px">Every project is scoped to your needs. These packages are a starting point — we'll tailor a proposal just for you.</p>
+    </div>
+    <div class="p-grid">
+      <div class="pcard fi">
+        <div class="p-tier">Launch</div>
+        <div class="p-price">$1,200</div>
+        <p class="p-desc">One focused deliverable for early-stage brands that need to make their first impression count.</p>
+        <hr class="p-hr">
+        <ul class="p-list">
+          <li><div class="pchk">✓</div>Logo design (3 concepts)</li>
+          <li><div class="pchk">✓</div>Color + typography system</li>
+          <li><div class="pchk">✓</div>Brand guidelines PDF</li>
+          <li><div class="pchk">✓</div>All source files</li>
+          <li><div class="pchk">✓</div>2 revision rounds</li>
+        </ul>
+        <button class="p-btn p-btn-ink">Get Started</button>
+      </div>
+      <div class="pcard dark fi">
+        <div class="p-tier">Studio</div>
+        <div class="p-price">$3,200</div>
+        <p class="p-desc">Full brand identity plus a marketing website — everything a growing business needs to look the part.</p>
+        <hr class="p-hr">
+        <ul class="p-list">
+          <li><div class="pchk">✓</div>Everything in Launch</li>
+          <li><div class="pchk">✓</div>Full marketing website</li>
+          <li><div class="pchk">✓</div>Mobile-responsive design</li>
+          <li><div class="pchk">✓</div>Social media kit</li>
+          <li><div class="pchk">✓</div>3 revision rounds</li>
+          <li><div class="pchk">✓</div>30-day post-launch support</li>
+        </ul>
+        <button class="p-btn p-btn-light">Get Started</button>
+      </div>
+      <div class="pcard fi">
+        <div class="p-tier">Growth</div>
+        <div class="p-price">Custom</div>
+        <p class="p-desc">Ongoing creative partnership for teams that need consistent, high-quality design work every month.</p>
+        <hr class="p-hr">
+        <ul class="p-list">
+          <li><div class="pchk">✓</div>Everything in Studio</li>
+          <li><div class="pchk">✓</div>Monthly design retainer</li>
+          <li><div class="pchk">✓</div>Campaign creative</li>
+          <li><div class="pchk">✓</div>Pitch deck design</li>
+          <li><div class="pchk">✓</div>Priority turnaround</li>
+        </ul>
+        <button class="p-btn p-btn-out">Talk to Us</button>
+      </div>
+    </div>
+    <p class="p-note">All projects begin with a free 30-minute discovery call. No commitment required.</p>
+  </div>
+</section>
+
+<!-- ━━ CTA ━━ -->
+<section class="cta-sec">
+  <div class="cta-bg">Arca</div>
+  <div class="cta-in">
+    <div>
+      <h2 class="cta-h">Let's make<br>something<br><em>great together.</em></h2>
+      <p class="cta-p">We're currently accepting new projects for Q3 2026. Spots are limited — reach out today to secure yours.</p>
+    </div>
+    <div class="cta-btns">
+      <button class="btn-coral">Start a Project</button>
+      <button class="btn-ghost-w">View Our Work</button>
+    </div>
+  </div>
+</section>
+
+<!-- ━━ FOOTER ━━ -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo">Arc<em>a</em> Studio</div>
+      <p class="foot-desc">Brand and web design studio based in New York. We help businesses build identities that are impossible to ignore.</p>
+    </div>
+    <div class="fc">
+      <h5>Studio</h5>
+      <ul>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Process</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="#">Start a Project</a></li>
+        <li><a href="#">hello@arcastudio.co</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Cookie Settings</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Arca Studio LLC. All rights reserved. Based in New York.</span>
+    <div class="foot-bot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fi').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
